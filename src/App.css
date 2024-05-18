@@ -27,8 +27,7 @@ body {
 }
 
 .header {
-  padding: 10px;
-  padding-bottom: 20px;
+  padding-left: 10px;
   color: #333;
 }
 
@@ -36,12 +35,11 @@ body {
   display: flex;
   justify-content: flex-start; /* Align items to the left */
   align-items: center;
-  padding: 20px 0;
-  padding: 10px;
+  padding-left: 10px;
   color: #333;
 }
 .temperature-display img {
-  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .temperature {
@@ -131,6 +129,66 @@ body {
 
 .css-p1olib-MuiAutocomplete-endAdornment {
   display: none;
+}
+
+.hourly-graph {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.additional-info {
+  padding-left: 375px;
+  font-size: 1rem;
+}
+
+.graph-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.graph-buttons button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.graph-buttons button:hover {
+  background-color: #e0e0e0;
+}
+
+.hourly-graphs {
+  width: 100%;
+  max-width: 800px; /* Ensure it matches the max-width of .weekly-forecast */
+  max-height: 200px; /* Set the max-height to 200px */
+  margin: 20px auto;
+  overflow: hidden; /* Add this line */
+}
+
+.hourly-graphs > div {
+  width: 100%; /* Ensure the graph takes full width of its container */
+}
+
+.hourly-wind {
+  display: flex;
+  max-height: 150px;
+  justify-content: space-between;
+}
+.hourly-wind img {
+  width: 50px;
+  height: 50px;
+}
+
+.wind-item {
+  text-align: center;
+  margin: 10px;
 }
 
 @media (max-width: 768px) {

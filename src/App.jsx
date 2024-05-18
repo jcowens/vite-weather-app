@@ -2,6 +2,9 @@ import { useEffect, useState, useMemo } from "react";
 import Header from "./components/Header";
 import TemperatureDisplay from "./components/TemperatureDisplay";
 import WeeklyForecast from "./components/WeeklyForecast";
+import HourlyGraph from "./components/HourlyTemperatureGraph";
+import HourlyWind from "./components/HourlyWind";
+import HourlyPrecipitationGraph from "./components/HourlyPrecipitationGraph";
 import {
   getCurrentWeather,
   getWeeklyForecast,
@@ -19,11 +22,12 @@ import "./App.css";
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [weeklyForecast, setWeeklyForecast] = useState([]);
+  const [hourlyData, setHourlyData] = useState([]);
   const [isCelsius, setIsCelsius] = useState(false);
   const [value, setValue] = useState(null);
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState([]);
-
+  const [selectedGraph, setSelectedGraph] = useState("temperature");
   const fetchWeatherData = async (location) => {
     const current = await getCurrentWeather(location);
     setCurrentWeather(current);
@@ -34,6 +38,7 @@ function App() {
       (day) => day.date >= today
     );
     setWeeklyForecast(filteredForecast);
+    setHourlyData(filteredForecast[0]?.hour || []); // Set initial hourly data
   };
 
   useEffect(() => {
@@ -108,6 +113,7 @@ function App() {
       country: PropTypes.string.isRequired,
     }).isRequired,
   };
+
   return (
     <div className="weather-app">
       <Autocomplete
@@ -149,7 +155,10 @@ function App() {
       />
       {currentWeather && (
         <>
-          <Header location={currentWeather.location} />
+          <Header
+            location={currentWeather.location}
+            condition={currentWeather.current.condition}
+          />
           <TemperatureDisplay
             tempC={currentWeather.current.temp_c}
             tempF={currentWeather.current.temp_f}
@@ -159,7 +168,37 @@ function App() {
           />
         </>
       )}
-      <WeeklyForecast forecast={weeklyForecast} isCelsius={isCelsius} />
+      <div className="graph-buttons">
+        <button onClick={() => setSelectedGraph("temperature")}>
+          Temperature
+        </button>
+        <button onClick={() => setSelectedGraph("precipitation")}>
+          Precipitation
+        </button>
+        <button onClick={() => setSelectedGraph("wind")}>Wind</button>
+      </div>
+      <div className="hourly-graphs">
+        {selectedGraph === "temperature" && (
+          <HourlyGraph
+            data={hourlyData}
+            label="Temperature"
+            dataKey={isCelsius ? "temp_c" : "temp_f"}
+            isCelsius={isCelsius}
+            setIsCelsius={setIsCelsius}
+          />
+        )}
+        {selectedGraph === "precipitation" && (
+          <HourlyPrecipitationGraph data={hourlyData} />
+        )}
+        {selectedGraph === "wind" && (
+          <HourlyWind data={hourlyData} isCelsius={isCelsius} />
+        )}
+      </div>
+      <WeeklyForecast
+        forecast={weeklyForecast}
+        isCelsius={isCelsius}
+        onDayClick={(day) => setHourlyData(day.hour)}
+      />
     </div>
   );
 }

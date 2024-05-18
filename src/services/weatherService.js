@@ -14,7 +14,7 @@ export const getCurrentWeather = async (location) => {
 
 export const getWeeklyForecast = async (location) => {
   const response = await axios.get(
-    `${BASE_URL}/forecast.json?key=${API_KEY}&q=${location}&days=7`
+    `${BASE_URL}/forecast.json?key=${API_KEY}&q=${location}&days=7&hourly=1`
   );
 
   return response.data;

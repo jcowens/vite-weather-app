@@ -18,6 +18,7 @@ const TemperatureDisplay = ({
           {temp}
           {unit}
         </h2>
+
         <div className="unit-toggle">
           <span
             className={isCelsius ? "selected" : ""}
@@ -35,6 +36,11 @@ const TemperatureDisplay = ({
         </div>
       </div>
       <img src={iconUrl} alt="Weather Icon" />
+      <div className="additional-info">
+        <div><small>Precipitation: {isCelsius ? current.precip_mm : current.precip_in}{isCelsius ? " mm" : " in"}</small></div>
+        <div><small>Humidity: {current.humidity}%</small></div>
+        <div><small>Wind: {isCelsius ? `${current.wind_kph} kph` : `${current.wind_mph} mph`}</small></div>
+      </div>
     </div>
   );
 };

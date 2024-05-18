@@ -1,22 +1,27 @@
 import PropTypes from "prop-types";
 import { format, parseISO } from "date-fns";
 
-const DayForecast = ({ day, isCelsius }) => {
+const DayForecast = ({ day, isCelsius, onDayClick }) => {
   const dayOfWeek = format(parseISO(day.date), "EEEE");
 
-  const temp = isCelsius
-    ? Math.round(day.day.avgtemp_c)
-    : Math.round(day.day.avgtemp_f);
+  const highTemp = isCelsius
+    ? Math.round(day.day.maxtemp_c)
+    : Math.round(day.day.maxtemp_f);
+
+  const lowTemp = isCelsius
+    ? Math.round(day.day.mintemp_c)
+    : Math.round(day.day.mintemp_f);
 
   return (
-    <div className="day-forecast">
+    <div className="day-forecast" onClick={() => onDayClick(day)}>
       <h3>{dayOfWeek}</h3>
       <img src={day.day.condition.icon} alt={day.day.condition.text} />
       <p>
-        {temp}
-        {isCelsius ? "°C" : "°F"}
+        <strong>{highTemp}{isCelsius ? "°C" : "°F"}</strong>
       </p>
-      <p>{day.day.condition.text}</p>
+      <p>
+        {lowTemp}{isCelsius ? "°C" : "°F"}
+      </p>
     </div>
   );
 };
@@ -25,8 +30,10 @@ DayForecast.propTypes = {
   day: PropTypes.shape({
     date: PropTypes.string.isRequired,
     day: PropTypes.shape({
-      avgtemp_c: PropTypes.number.isRequired,
-      avgtemp_f: PropTypes.number.isRequired,
+      maxtemp_c: PropTypes.number.isRequired,
+      maxtemp_f: PropTypes.number.isRequired,
+      mintemp_c: PropTypes.number.isRequired,
+      mintemp_f: PropTypes.number.isRequired,
       condition: PropTypes.shape({
         text: PropTypes.string.isRequired,
         icon: PropTypes.string.isRequired,
@@ -34,6 +41,7 @@ DayForecast.propTypes = {
     }).isRequired,
   }).isRequired,
   isCelsius: PropTypes.bool.isRequired,
+  onDayClick: PropTypes.func.isRequired,
 };
 
 export default DayForecast;
