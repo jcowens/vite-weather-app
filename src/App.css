@@ -1,0 +1,165 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.weather-app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #333;
+  transition: box-shadow 0.3s ease;
+  position: relative; /* Add this line */
+}
+
+.weather-app:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+  padding: 10px;
+  padding-bottom: 20px;
+  color: #333;
+}
+
+.temperature-display {
+  display: flex;
+  justify-content: flex-start; /* Align items to the left */
+  align-items: center;
+  padding: 20px 0;
+  padding: 10px;
+  color: #333;
+}
+.temperature-display img {
+  padding-right: 10px;
+}
+
+.temperature {
+  position: relative; /* Add this line to make .temperature the reference point */
+}
+
+.temperature h2 {
+  font-size: 4rem;
+  margin: 0;
+  color: #333;
+}
+
+.unit-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.unit-toggle span {
+  margin: 0 5px;
+  color: #333;
+}
+
+.unit-toggle .selected {
+  font-weight: bold;
+  color: #000;
+}
+
+.weekly-forecast {
+  display: flex;
+  justify-content: flex-start; /* Align items to the left */
+  color: #333;
+}
+
+.day-forecast {
+  text-align: center;
+  padding: 10px;
+  flex: 1;
+  color: #333;
+  transition: transform 0.3s ease;
+}
+
+.day-forecast img {
+  width: 50px;
+  height: 50px;
+}
+
+.day-forecast:hover {
+  transform: scale(1.05);
+}
+
+.weather-location-search {
+  margin: 0 auto; /* Center the component */
+  width: 100%; /* Make it take full width of its container */
+  max-width: 600px; /* Set a maximum width */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  background-color: white;
+}
+
+.search-results {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #ccc;
+  border-radius: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-results li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.search-results li:hover {
+  background-color: #f0f0f0;
+}
+
+.css-p1olib-MuiAutocomplete-endAdornment {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .weather-app {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .temperature-display {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .weekly-forecast {
+    flex-direction: column;
+  }
+
+  .day-forecast {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .temperature h2 {
+    font-size: 2.5rem;
+  }
+
+  .day-forecast img {
+    width: 40px;
+    height: 40px;
+  }
+}
