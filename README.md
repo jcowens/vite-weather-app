@@ -10,6 +10,12 @@ This project is a weather application built with React and Vite. It fetches and 
 - **Location Search**: Autocomplete search for locations with saved locations feature.
 - **Unit Toggle**: Switch between Celsius and Fahrenheit.
 
+## Example
+
+![vite-weather-app-jcowens netlify app_2024-05-18_14_47_25](https://github.com/jcowens/vite-weather-app/assets/13876469/2859b981-961e-49bc-a0bd-296147cb5b49)
+
+*Figure: Screenshot of the Vite Weather App showing current weather, weekly forecast, and hourly data.*
+
 ## Installation
 
 1. Clone the repository:
