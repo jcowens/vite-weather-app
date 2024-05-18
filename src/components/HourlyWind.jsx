@@ -3,7 +3,6 @@ import format from "date-fns/format";
 
 const HourlyWind = ({ data, isCelsius }) => {
   const filteredData = data.filter((_, index) => index % 3 === 0); // Update every 3 hours
-  console.log(data);
   return (
     <div className="hourly-wind">
       {filteredData.map((hour, index) => (
