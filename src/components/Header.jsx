@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import PropTypes from "prop-types";
 
 const Header = ({ location, condition }) => {

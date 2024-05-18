@@ -35,7 +35,7 @@ WeeklyForecast.propTypes = {
   ).isRequired,
 
   isCelsius: PropTypes.bool.isRequired,
-  onDayClick: PropTypes.func.isRequired, // Added this line
+  onDayClick: PropTypes.func.isRequired, 
 };
 
 export default WeeklyForecast;

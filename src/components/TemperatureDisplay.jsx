@@ -9,7 +9,7 @@ const TemperatureDisplay = ({
 }) => {
   const temp = isCelsius ? Math.round(tempC) : Math.round(tempF);
   const unit = isCelsius ? "°C" : "°F";
-  const iconUrl = current.condition.icon.replace("64x64", "128x128"); // Update icon URL
+  const iconUrl = current.condition.icon.replace("64x64", "128x128");
 
   return (
     <div className="temperature-display">

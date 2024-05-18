@@ -38,7 +38,7 @@ function App() {
       (day) => day.date >= today
     );
     setWeeklyForecast(filteredForecast);
-    setHourlyData(filteredForecast[0]?.hour || []); // Set initial hourly data
+    setHourlyData(filteredForecast[0]?.hour || []);
   };
 
   useEffect(() => {
@@ -84,7 +84,7 @@ function App() {
   }, [value, inputValue, fetch]);
 
   const renderOption = (props, option) => {
-    const { ...rest } = props; // Extract the key prop from props
+    const { ...rest } = props; 
     return (
       <li key={`${option.name}-${option.region}-${option.country}`} {...rest}>
         <Grid container alignItems="center">
