@@ -12,7 +12,6 @@ import {
 } from "./services/weatherService";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { debounce } from "@mui/material/utils";
@@ -42,6 +41,12 @@ function App() {
   };
 
   useEffect(() => {
+    const savedLocations =
+      JSON.parse(localStorage.getItem("savedLocations")) || [];
+    setOptions(savedLocations);
+  }, []);
+
+  useEffect(() => {
     fetchWeatherData("London");
   }, []);
 
@@ -58,7 +63,11 @@ function App() {
     let active = true;
 
     if (inputValue === "") {
-      setOptions(value ? [value] : []);
+      setOptions(
+        value
+          ? [value]
+          : JSON.parse(localStorage.getItem("savedLocations")) || []
+      );
       return undefined;
     }
 
@@ -84,19 +93,21 @@ function App() {
   }, [value, inputValue, fetch]);
 
   const renderOption = (props, option) => {
-    const { ...rest } = props; 
+    const savedLocations =
+      JSON.parse(localStorage.getItem("savedLocations")) || [];
+    const isSaved = savedLocations.some(
+      (savedOption) =>
+        `${savedOption.name},${savedOption.region},${savedOption.country}` ===
+        `${option.name},${option.region},${option.country}`
+    );
+
     return (
-      <li key={`${option.name}-${option.region}-${option.country}`} {...rest}>
+      <li {...props}>
         <Grid container alignItems="center">
-          <Grid item sx={{ display: "flex", width: 44 }}>
-            <LocationOnIcon sx={{ color: "text.secondary" }} />
-          </Grid>
-          <Grid
-            item
-            sx={{ width: "calc(100% - 44px)", wordWrap: "break-word" }}
-          >
-            <Typography>
-              {option.name}, {option.region}, {option.country}
+          <Grid item>
+            <Typography variant="body2" color="text.secondary">
+              {`${option.name}, ${option.region}, ${option.country}`}
+              {isSaved && " (Saved)"}
             </Typography>
           </Grid>
         </Grid>
@@ -132,17 +143,35 @@ function App() {
         value={value}
         noOptionsText="No locations"
         onChange={(event, newValue) => {
-          setOptions(newValue ? [newValue, ...options] : options);
-          setValue(newValue);
           if (
             newValue &&
             newValue.name &&
             newValue.region &&
             newValue.country
           ) {
+            const locationKey = `${newValue.name},${newValue.region},${newValue.country}`;
+            const savedLocations =
+              JSON.parse(localStorage.getItem("savedLocations")) || [];
+            const isDuplicate = savedLocations.some(
+              (option) =>
+                `${option.name},${option.region},${option.country}` ===
+                locationKey
+            );
+
+            if (!isDuplicate) {
+              const updatedLocations = [newValue, ...savedLocations];
+              localStorage.setItem(
+                "savedLocations",
+                JSON.stringify(updatedLocations)
+              );
+            }
+
+            setValue(newValue);
             fetchWeatherData(
               `${newValue.name}, ${newValue.region}, ${newValue.country}`
             );
+          } else {
+            setValue(null);
           }
         }}
         onInputChange={(event, newInputValue) => {
