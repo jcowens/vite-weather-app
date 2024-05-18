@@ -13,9 +13,11 @@ const HourlyWind = ({ data, isCelsius }) => {
             </small>
           </div>
           <img
+            key={hour.wind_degree} // Add key to force re-render
             src="/1.png"
             alt="Wind Direction"
-            style={{ transform: `rotate(${hour.wind_degree}deg)` }}
+            className="wind-direction"
+            style={{ '--wind-degree': `${hour.wind_degree}deg` }}
           />
           <div>
             <small>{format(new Date(hour.time), "h:mm:a")}</small>

@@ -199,6 +199,22 @@ body {
   margin: 10px;
 }
 
+@keyframes rotateWind {
+  0% {
+    transform: rotate(0deg);
+  }
+  1% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(var(--wind-degree));
+  }
+}
+
+.wind-direction {
+  animation: rotateWind 1s linear forwards;
+}
+
 @media (max-width: 768px) {
   .weather-app {
     padding: 10px;
