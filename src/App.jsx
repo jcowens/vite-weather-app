@@ -47,6 +47,20 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (currentWeather) {
+      const temp = isCelsius
+        ? currentWeather.current.temp_c
+        : currentWeather.current.temp_f;
+      const unit = isCelsius ? "°C" : "°F";
+      document.title = `${Math.round(temp)}${unit} in ${currentWeather.location.name}, ${currentWeather.location.region}`;
+      const link = document.querySelector("link[rel~='icon']");
+      if (link) {
+        link.href = currentWeather.current.condition.icon;
+      }
+    }
+  }, [currentWeather, isCelsius]);
+
+  useEffect(() => {
     fetchWeatherData("Seattle");
   }, []);
 
