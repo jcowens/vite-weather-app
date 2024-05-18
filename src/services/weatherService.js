@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
-const BASE_URL = "http://api.weatherapi.com/v1";
+const BASE_URL = "https://api.weatherapi.com/v1";
 
 export const getCurrentWeather = async (location) => {
   const response = await axios.get(
@@ -21,7 +21,9 @@ export const getWeeklyForecast = async (location) => {
 };
 
 export const searchLocation = async (query) => {
-  const response = await axios.get(`${BASE_URL}/search.json?key=${API_KEY}&q=${query}`);
+  const response = await axios.get(
+    `${BASE_URL}/search.json?key=${API_KEY}&q=${query}`
+  );
   return response.data.map((result) => ({
     name: result.name,
     region: result.region,
