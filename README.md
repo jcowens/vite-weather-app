@@ -9,6 +9,10 @@ This project is a weather application built with React and Vite. It fetches and 
 - **Hourly Data**: Provides hourly temperature, precipitation, and wind data.
 - **Location Search**: Autocomplete search for locations with saved locations feature.
 - **Unit Toggle**: Switch between Celsius and Fahrenheit.
+  
+ ## Live Demo
+
+Check out the live demo of the app [here](https://vite-weather-app-jcowens.netlify.app/).
 
 ## Example
 
