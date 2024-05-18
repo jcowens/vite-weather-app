@@ -12,7 +12,7 @@ This project is a weather application built with React and Vite. It fetches and 
   
  ## Live Demo
 
-Check out the live demo of the app [here](https://vite-weather-app-jcowens.netlify.app/)
+Check out the live demo of the app [here](https://vite-weather-app-jcowens.netlify.app/).
 
 ## Example
 
