@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 
 const TemperatureDisplay = ({
@@ -10,6 +11,18 @@ const TemperatureDisplay = ({
   const temp = isCelsius ? Math.round(tempC) : Math.round(tempF);
   const unit = isCelsius ? "°C" : "°F";
   const iconUrl = current.condition.icon.replace("64x64", "128x128");
+
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = iconUrl;
+    document.head.appendChild(link);
+
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, [iconUrl]);
 
   return (
     <div className="temperature-display">
