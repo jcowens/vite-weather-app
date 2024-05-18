@@ -90,6 +90,7 @@ body {
 
 .day-forecast:hover {
   transform: scale(1.05);
+  cursor: pointer;
 }
 
 .weather-location-search {
