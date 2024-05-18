@@ -1,8 +1,58 @@
-# React + Vite
+# Vite Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a weather application built with React and Vite. It fetches and displays current weather, weekly forecasts, and hourly data for selected locations using WeatherAPI.com.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Current Weather**: Displays current temperature, condition, and additional info.
+- **Weekly Forecast**: Shows a 7-day weather forecast.
+- **Hourly Data**: Provides hourly temperature, precipitation, and wind data.
+- **Location Search**: Autocomplete search for locations with saved locations feature.
+- **Unit Toggle**: Switch between Celsius and Fahrenheit.
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/jcowens/vite-weather-app.git
+   cd vite-weather-app
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file in the root directory and add your WeatherAPI key:
+   ```env
+   VITE_WEATHER_API_KEY=your_api_key_here
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Usage
+
+- **Search for a Location**: Use the search bar to find and select a location. The selected location will be saved in local storage.
+- **View Weather Data**: The app displays current weather, weekly forecast, and hourly data for the selected location.
+- **Toggle Units**: Switch between Celsius and Fahrenheit using the unit toggle.
+
+## Dependencies
+
+- React
+- Vite
+- Material UI
+- Axios
+- Date-fns
+- React Chart.js 2
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request on GitHub.
+
+## License
+
+This project is licensed under the MIT License.
+
