@@ -47,7 +47,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetchWeatherData("London");
+    fetchWeatherData("Seattle");
   }, []);
 
   const fetch = useMemo(
