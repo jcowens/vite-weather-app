@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import format from "date-fns/format";
 
 const HourlyWind = ({ data, isCelsius }) => {
-  const filteredData = data.filter((_, index) => index % 3 === 0); 
+  const filteredData = data.filter((_, index) => index % 3 === 0);
   return (
     <div className="hourly-wind">
       {filteredData.map((hour, index) => (
