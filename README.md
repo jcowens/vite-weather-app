@@ -19,7 +19,6 @@ Check out the live demo of the app [here](https://vite-weather-app-jcowens.netli
 ![vite-weather-app-jcowens netlify app_2024-05-19_21_38_29](https://github.com/jcowens/vite-weather-app/assets/13876469/5927461d-6271-4044-b341-270c06817102)
 
 
-*Figure: Screenshot of the Vite Weather App showing current weather, weekly forecast, and hourly data.*
 
 ## Lighthouse Score
 
