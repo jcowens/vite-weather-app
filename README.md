@@ -16,7 +16,8 @@ Check out the live demo of the app [here](https://vite-weather-app-jcowens.netli
 
 ## Example
 
-![vite-weather-app-jcowens netlify app_2024-05-18_14_47_25](https://github.com/jcowens/vite-weather-app/assets/13876469/2859b981-961e-49bc-a0bd-296147cb5b49)
+![vite-weather-app-jcowens netlify app_2024-05-19_21_38_29](https://github.com/jcowens/vite-weather-app/assets/13876469/5927461d-6271-4044-b341-270c06817102)
+
 
 *Figure: Screenshot of the Vite Weather App showing current weather, weekly forecast, and hourly data.*
 
