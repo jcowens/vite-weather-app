@@ -20,6 +20,11 @@ Check out the live demo of the app [here](https://vite-weather-app-jcowens.netli
 
 *Figure: Screenshot of the Vite Weather App showing current weather, weekly forecast, and hourly data.*
 
+## Lighthouse Score
+
+![Capture](https://github.com/jcowens/vite-weather-app/assets/13876469/1283aa0f-7dee-44d0-8614-3a9632e97a1f)
+
+
 ## Installation
 
 1. Clone the repository:
