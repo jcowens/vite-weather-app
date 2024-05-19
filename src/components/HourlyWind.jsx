@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import format from "date-fns/format";
+import { format, parseISO } from "date-fns";
 
 const HourlyWind = ({ data, isCelsius }) => {
   const filteredData = data.filter((_, index) => index % 3 === 0);
@@ -20,7 +20,7 @@ const HourlyWind = ({ data, isCelsius }) => {
             style={{ "--wind-degree": `${hour.wind_degree}deg` }}
           />
           <div>
-            <small>{format(new Date(hour.time), "h:mm:a")}</small>
+            <small>{format(parseISO(hour.time), "h:mm:a")}</small>
           </div>
         </div>
       ))}

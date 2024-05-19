@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { format, parseISO } from "date-fns";
 
-const DayForecast = ({ day, isCelsius, onDayClick }) => {
+const DayForecast = ({ day, isCelsius, onDayClick, isSelected }) => {
   const dayOfWeek = format(parseISO(day.date), "EEEE");
 
   const highTemp = isCelsius
@@ -13,14 +13,21 @@ const DayForecast = ({ day, isCelsius, onDayClick }) => {
     : Math.round(day.day.mintemp_f);
 
   return (
-    <div className="day-forecast" onClick={() => onDayClick(day)}>
+    <div
+      className={`day-forecast ${isSelected ? "selected" : ""}`}
+      onClick={() => onDayClick(day)}
+    >
       <h3>{dayOfWeek}</h3>
       <img src={day.day.condition.icon} alt={day.day.condition.text} />
       <p>
-        <strong>{highTemp}{isCelsius ? "°C" : "°F"}</strong>
+        <strong>
+          {highTemp}
+          {isCelsius ? "°C" : "°F"}
+        </strong>
       </p>
       <p>
-        {lowTemp}{isCelsius ? "°C" : "°F"}
+        {lowTemp}
+        {isCelsius ? "°C" : "°F"}
       </p>
     </div>
   );
@@ -42,6 +49,7 @@ DayForecast.propTypes = {
   }).isRequired,
   isCelsius: PropTypes.bool.isRequired,
   onDayClick: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool.isRequired,
 };
 
 export default DayForecast;

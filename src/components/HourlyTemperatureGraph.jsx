@@ -10,7 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import format from "date-fns/format";
+import { format, parseISO } from "date-fns";
 
 ChartJS.register(
   CategoryScale,
@@ -24,18 +24,26 @@ ChartJS.register(
 
 const HourlyTemperatureGraph = ({ data, label, dataKey }) => {
   const chartData = {
-    labels: data.map((hour) => format(new Date(hour.time), "p")),
+    labels: data.map((hour) => format(parseISO(hour.time), "p")),
     datasets: [
       {
         label,
-        data: data.map((hour) => hour[dataKey]),
+        data: data.map((hour) => Math.round(hour[dataKey])),
         borderColor: "rgba(75,192,192,1)",
         fill: false,
       },
     ],
   };
 
-  return <Line data={chartData} options={{ maintainAspectRatio: false }} />;
+  return (
+    <Line
+      data={chartData}
+      options={{
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+      }}
+    />
+  );
 };
 
 HourlyTemperatureGraph.propTypes = {

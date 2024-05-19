@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import format from "date-fns/format";
+import { format, parseISO } from "date-fns";
 
 ChartJS.register(
   CategoryScale,
@@ -22,7 +22,7 @@ ChartJS.register(
 
 const HourlyPrecipitationGraph = ({ data }) => {
   const chartData = {
-    labels: data.map((hour) => format(new Date(hour.time), "p")),
+    labels: data.map((hour) => format(parseISO(hour.time), "p")),
     datasets: [
       {
         label: "Precipitation (%)",
@@ -34,7 +34,15 @@ const HourlyPrecipitationGraph = ({ data }) => {
     ],
   };
 
-  return <Bar data={chartData} options={{ maintainAspectRatio: false }} />;
+  return (
+    <Bar
+      data={chartData}
+      options={{
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+      }}
+    />
+  );
 };
 
 HourlyPrecipitationGraph.propTypes = {

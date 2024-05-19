@@ -31,6 +31,19 @@ body {
   color: #333;
 }
 
+.location-time {
+  display: flex;
+  align-items: baseline;
+}
+
+.location-time h3 {
+  margin-right: 10px;
+}
+
+.location-time h4 {
+  margin: 0;
+}
+
 .temperature-display {
   display: flex;
   justify-content: flex-start;
@@ -92,6 +105,10 @@ body {
 .day-forecast:hover {
   transform: scale(1.05);
   cursor: pointer;
+}
+
+.day-forecast.selected {
+  transform: scale(1.05);
 }
 
 .weather-location-search {
@@ -165,6 +182,11 @@ body {
   border-radius: 5px;
   background-color: #f0f0f0;
   transition: background-color 0.3s ease;
+}
+
+.graph-buttons button.active {
+  background-color: #e0e0e0;
+  font-weight: bold;
 }
 
 .graph-buttons button:hover {

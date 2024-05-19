@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import DayForecast from "./DayForecast";
 
-const WeeklyForecast = ({ forecast, isCelsius, onDayClick }) => {
+const WeeklyForecast = ({ forecast, isCelsius, onDayClick, selectedDate }) => {
   return (
     <div className="weekly-forecast">
       {forecast.map((day, index) => (
@@ -11,6 +11,7 @@ const WeeklyForecast = ({ forecast, isCelsius, onDayClick }) => {
           day={day}
           isCelsius={isCelsius}
           onDayClick={onDayClick}
+          isSelected={day.date === selectedDate}
         />
       ))}
     </div>
@@ -35,7 +36,8 @@ WeeklyForecast.propTypes = {
   ).isRequired,
 
   isCelsius: PropTypes.bool.isRequired,
-  onDayClick: PropTypes.func.isRequired, 
+  onDayClick: PropTypes.func.isRequired,
+  selectedDate: PropTypes.string,
 };
 
 export default WeeklyForecast;

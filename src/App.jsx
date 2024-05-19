@@ -27,6 +27,8 @@ function App() {
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState([]);
   const [selectedGraph, setSelectedGraph] = useState("temperature");
+  const [selectedDate, setSelectedDate] = useState(null);
+
   const fetchWeatherData = async (location) => {
     const current = await getCurrentWeather(location);
     setCurrentWeather(current);
@@ -52,7 +54,9 @@ function App() {
         ? currentWeather.current.temp_c
         : currentWeather.current.temp_f;
       const unit = isCelsius ? "°C" : "°F";
-      document.title = `${Math.round(temp)}${unit} in ${currentWeather.location.name}, ${currentWeather.location.region}`;
+      document.title = `${Math.round(temp)}${unit} in ${
+        currentWeather.location.name
+      }, ${currentWeather.location.region}`;
       const link = document.querySelector("link[rel~='icon']");
       if (link) {
         link.href = currentWeather.current.condition.icon;
@@ -212,13 +216,24 @@ function App() {
         </>
       )}
       <div className="graph-buttons">
-        <button onClick={() => setSelectedGraph("temperature")}>
+        <button
+          className={selectedGraph === "temperature" ? "active" : ""}
+          onClick={() => setSelectedGraph("temperature")}
+        >
           Temperature
         </button>
-        <button onClick={() => setSelectedGraph("precipitation")}>
+        <button
+          className={selectedGraph === "precipitation" ? "active" : ""}
+          onClick={() => setSelectedGraph("precipitation")}
+        >
           Precipitation
         </button>
-        <button onClick={() => setSelectedGraph("wind")}>Wind</button>
+        <button
+          className={selectedGraph === "wind" ? "active" : ""}
+          onClick={() => setSelectedGraph("wind")}
+        >
+          Wind
+        </button>
       </div>
       <div className="hourly-graphs">
         {selectedGraph === "temperature" && (
@@ -240,7 +255,11 @@ function App() {
       <WeeklyForecast
         forecast={weeklyForecast}
         isCelsius={isCelsius}
-        onDayClick={(day) => setHourlyData(day.hour)}
+        onDayClick={(day) => {
+          setHourlyData(day.hour);
+          setSelectedDate(day.date);
+        }}
+        selectedDate={selectedDate}
       />
     </div>
   );
