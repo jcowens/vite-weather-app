@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { parseISO, format } from "date-fns";
+import { format } from "date-fns";
 
 const Header = ({ location, condition }) => {
   return (
@@ -8,7 +8,7 @@ const Header = ({ location, condition }) => {
         <h3>
           {location.name}, {location.region}
         </h3>
-        <h4>{format(parseISO(location.localtime), "h:mm:a")}</h4>
+        <h4>{format(new Date(location.localtime), "h:mm:a")}</h4>
       </div>
       <h4>{condition.text}</h4>
     </header>
