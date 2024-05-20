@@ -28,6 +28,7 @@ function App() {
   const [options, setOptions] = useState([]);
   const [selectedGraph, setSelectedGraph] = useState("temperature");
   const [selectedDate, setSelectedDate] = useState(null);
+  const [isAppLoaded, setIsAppLoaded] = useState(false);
 
   const fetchWeatherData = async (location) => {
     const current = await getCurrentWeather(location);
@@ -46,6 +47,10 @@ function App() {
     const savedLocations =
       JSON.parse(localStorage.getItem("savedLocations")) || [];
     setOptions(savedLocations);
+  }, []);
+
+  useEffect(() => {
+    setIsAppLoaded(true);
   }, []);
 
   useEffect(() => {
@@ -235,23 +240,25 @@ function App() {
           Wind
         </button>
       </div>
-      <div className="hourly-graphs">
-        {selectedGraph === "temperature" && (
-          <HourlyGraph
-            data={hourlyData}
-            label="Temperature"
-            dataKey={isCelsius ? "temp_c" : "temp_f"}
-            isCelsius={isCelsius}
-            setIsCelsius={setIsCelsius}
-          />
-        )}
-        {selectedGraph === "precipitation" && (
-          <HourlyPrecipitationGraph data={hourlyData} />
-        )}
-        {selectedGraph === "wind" && (
-          <HourlyWind data={hourlyData} isCelsius={isCelsius} />
-        )}
-      </div>
+      {isAppLoaded && (
+        <div className="hourly-graphs">
+          {selectedGraph === "temperature" && (
+            <HourlyGraph
+              data={hourlyData}
+              label="Temperature"
+              dataKey={isCelsius ? "temp_c" : "temp_f"}
+              isCelsius={isCelsius}
+              setIsCelsius={setIsCelsius}
+            />
+          )}
+          {selectedGraph === "precipitation" && (
+            <HourlyPrecipitationGraph data={hourlyData} />
+          )}
+          {selectedGraph === "wind" && (
+            <HourlyWind data={hourlyData} isCelsius={isCelsius} />
+          )}
+        </div>
+      )}
       <WeeklyForecast
         forecast={weeklyForecast}
         isCelsius={isCelsius}
