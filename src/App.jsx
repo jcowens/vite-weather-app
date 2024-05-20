@@ -144,7 +144,7 @@ function App() {
   };
 
   return (
-    <div className="weather-app">
+    <div id="weather-app" className="weather-app">
       <Autocomplete
         className="weather-location-search"
         sx={{ width: "100%", maxWidth: "98%" }}
