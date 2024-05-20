@@ -40,6 +40,7 @@ const HourlyTemperatureGraph = ({ data, label, dataKey }) => {
       data={chartData}
       options={{
         maintainAspectRatio: false,
+        responsive: true,
         plugins: { legend: { display: false } },
       }}
     />
