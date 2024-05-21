@@ -12,7 +12,7 @@ This project is a weather application built with React and Vite. It fetches and 
   
  ## Live Demo
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b4d429a4-3306-432b-aae0-0ad7a2e0234f/deploy-status)](https://app.netlify.com/sites/vite-weather-app-jcowens/deploys)  
-Check out the live demo of the app [here](https://vite-weather-app-jcowens.netlify.app/).
+Check out the live demo of the app [here](https://weather.jcowens.site/).
 
 ## Example
 
