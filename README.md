@@ -54,6 +54,11 @@ Check out the live demo of the app [here](https://weather.jcowens.site/).
 - **View Weather Data**: The app displays current weather, weekly forecast, and hourly data for the selected location.
 - **Toggle Units**: Switch between Celsius and Fahrenheit using the unit toggle.
 
+## TODO
+
+- **Sunrise and Sunset Chart**
+- **Live Radar**
+
 ## Dependencies
 
 - React
