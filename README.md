@@ -72,7 +72,5 @@ Check out the live demo of the app [here](https://weather.jcowens.site/).
 
 Contributions are welcome! Please open an issue or submit a pull request on GitHub.
 
-## License
 
-This project is licensed under the MIT License.
 
