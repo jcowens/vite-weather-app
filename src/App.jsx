@@ -5,6 +5,7 @@ import WeeklyForecast from "./components/WeeklyForecast";
 import HourlyGraph from "./components/HourlyTemperatureGraph";
 import HourlyWind from "./components/HourlyWind";
 import HourlyPrecipitationGraph from "./components/HourlyPrecipitationGraph";
+import PrecipitationMap from "./components/PrecipitationMap";
 import {
   getCurrentWeather,
   getWeeklyForecast,
@@ -239,6 +240,12 @@ function App() {
         >
           Wind
         </button>
+        <button
+          className={selectedGraph === "map" ? "active" : ""}
+          onClick={() => setSelectedGraph("map")}
+        >
+          Live Map
+        </button>
       </div>
       {isAppLoaded && (
         <div className="hourly-graphs">
@@ -256,6 +263,12 @@ function App() {
           )}
           {selectedGraph === "wind" && (
             <HourlyWind data={hourlyData} isCelsius={isCelsius} />
+          )}
+          {selectedGraph === "map" && (
+            <PrecipitationMap
+              lat={currentWeather.location.lat}
+              lon={currentWeather.location.lon}
+            />
           )}
         </div>
       )}
