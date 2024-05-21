@@ -7,7 +7,7 @@ This project is a weather application built with React and Vite. It fetches and 
 - **Current Weather**: Displays current temperature, condition, and additional info.
 - **Weekly Forecast**: Shows a 7-day weather forecast.
 - **Hourly Data**: Provides hourly temperature, precipitation, and wind data.
-- **Location Search**: Autocomplete search for locations with saved locations feature.
+- **Location Search**: Autocomplete search for locations with saved locations.
 - **Unit Toggle**: Switch between Celsius and Fahrenheit.
   
  ## Live Demo
