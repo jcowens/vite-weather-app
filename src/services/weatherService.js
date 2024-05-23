@@ -2,8 +2,7 @@ import axios from "axios";
 
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
-const BASE_URL =
-  "https://cors-anywhere.herokuapp.com/https://api.weatherapi.com/v1";
+const BASE_URL = "/api";
 
 export const getCurrentWeather = async (location) => {
   const response = await axios.get(
